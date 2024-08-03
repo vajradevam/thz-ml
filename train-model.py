@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import sys
 
 df = pd.read_csv("./data_aman/data.csv")
 df = df.sample(frac=1).reset_index(drop=True)
@@ -64,13 +65,16 @@ model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
 
 history_saver = HistorySaver('./tmp/training_history.pkl')
 checkpoint = ModelCheckpoint('./tmp/model_checkpoint.h5', save_best_only=False)
-
 callbacks = [history_saver, checkpoint]
+
+EPOCHS = int(sys.argv[1])
+
+print(f"Training model with epochs={EPOCHS}")
 
 history = model.fit(
     train_x_t, train_y_t,
     validation_split=0.15,
-    epochs=10000,
+    epochs=EPOCHS,
     callbacks=callbacks,
     verbose=0
 )
