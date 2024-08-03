@@ -1,0 +1,1 @@
+If found copying or plaigarising this repository, i will sue you and your mom for 55 lakh rupees.
