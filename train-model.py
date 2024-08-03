@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import sys
 
 df = pd.read_csv("./data_aman/data.csv")
-df = df.sample(frac=1).reset_index(drop=True)
+df = df.sample(frac=1, random_state=123456).reset_index(drop=True)
 
 xcols = ['a', 'inl', 'pl', 'pw']
 ycols = ['freq', 's11', 'gain']
